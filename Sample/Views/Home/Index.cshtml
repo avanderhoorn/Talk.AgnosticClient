@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Building Agnostic Clients Through the Power of HTTP</h1><br />
+                <h2>by Anthony van der Hoorn and Nik Molnar</h2>
+            </hgroup>
+            <p>
+                How HTTP can be used to foster an eco-system where both client and server 
+                are able to adapt and evolve. Using concepts such as HATEOAS (Hypertext As 
+                The Engine Of Application State), Feature Toggles, Media Types and HTTP
+                know how.
+            </p>
+            <p>
+                This session will explore the lessons learned building the client for 
+                <a href="http://getglimpse.com">Glimpse</a>, an open source diagnostics 
+                and debugging tool for ASP.NET web developers. This 200 level session 
+                will cover many pragmatic steps you can take to move your client towards 
+                a server agnostic, decoupled architecture which will allow for independent 
+                evolution of both the server and client.
+            </p>
+        </div>
+    </section>
+}
+<h3>What we will be covering :</h3>
+<ol class="round">
+    <li class="zero">
+        <h5>Introduction</h5>
+        What Glimpse is and what problem we need to solve (many clients vs many servers).
+    </li>
+
+    <li class="one">
+        <h5>CORS/JSONP</h5>
+        We don’t know where our request is coming from so we need to be able to work with any domain.
+    </li>
+
+    <li class="two">
+        <h5>Initial Metadata Request</h5>
+        Next, how do we even know where to go for our initial system metadata.
+    </li>
+
+    <li class="three">
+        <h5>Resource Description</h5>
+        Now we know that we can work with any domain, we need to know which resources are available.
+    </li>
+
+    <li class="four">
+        <h5>Uri Templates</h5>
+        Even though we know resources, the different data can be injected into the URI’s hence we need a form of templates.
+    </li>
+
+    <li class="five">
+        <h5>Media Types</h5>
+        Now that we can start getting data, how do we know what data we can support.
+    </li>
+
+    <li class="six">
+        <h5>Resource Relationships</h5>
+        When we have data that we need to drill around on (like paging) we can turn to HTTP headers to tell us where we can go.
+    </li>
+
+    <li class="seven">
+        <h5>Feature Toggling</h5>
+        Something is missing or wrong, what do we do?
+    </li>
+
+    <li class="eight">
+        <h5>Http Caching</h5>
+        Now we have everything, we want to start optimizing.
+    </li>
+
+    <li class="nine">
+        <h5>Conclusion</h5>
+        What we have created when all this is said and done.
+    </li>
+</ol>
