@@ -51,13 +51,14 @@
                     <tr>
                         <th width="20%">Example 1:</th>
                         <td class="sample">
-<pre>$.ajax({
+                            <pre>$.ajax({
     url: '/foo{?query,number}',
     tokens: {query:'person', number: '1234'}
 });</pre>
                             Result:<br />
                             <em class="result1"></em> 
                         </td>
+                        <td width="15%"><input type="button" value="Run" id="example1"></td>
                     </tr>
                     <tr>
                         <th width="20%">Example 2:</th>
@@ -69,6 +70,7 @@
                             Result:<br />
                             <em class="result2"></em> 
                         </td>
+                        <td><input type="button" value="Run" id="example2"></td>
                     </tr>
                     <tr>
                         <th width="20%">Example 3:</th>
@@ -80,6 +82,7 @@
                             Result:<br />
                             <em class="result3"></em> 
                         </td>
+                        <td><input type="button" value="Run" id="example3"></td>
                     </tr>
                     <tr>
                         <th width="20%">Example 4:</th>
@@ -91,6 +94,7 @@
                             Result:<br />
                             <em class="result4"></em> 
                         </td>
+                        <td><input type="button" value="Run" id="example4"></td>
                     </tr>
                     <tr>
                         <th width="20%">Example 5:</th>
@@ -102,6 +106,7 @@
                             Result:<br />
                             <em class="result5"></em> 
                         </td>
+                        <td><input type="button" value="Run" id="example5"></td>
                     </tr>
                     <tr>
                         <th width="20%">Example 6:</th>
@@ -113,6 +118,7 @@
                             Result:<br />
                             <em class="result6"></em> 
                         </td>
+                        <td><input type="button" value="Run" id="example6"></td>
                     </tr>
                     <tr>
                         <th width="20%">Example 7:</th>
@@ -124,6 +130,7 @@
                             Result:<br />
                             <em class="result7"></em> 
                         </td>
+                        <td><input type="button" value="Run" id="example7"></td>
                     </tr>
                 </table>
         </li>  
@@ -139,43 +146,64 @@ $(function() {
         if (options.target) {
             $(options.target).text(options.url);
             jqXHR.abort();
+            $(options.target).closest('tr').find('input').hide();
         }
     });
-                
-    $.ajax({
-        url: '/foo{?query,number}',
-        tokens: {query:'person', number: '1234'},
-        target: '.result1'
-    }); 
-    $.ajax({
-        url: '/foo{?query,number}',
-        tokens: {number: '1234'},
-        target: '.result2'
-    }); 
-    $.ajax({
-        url: '/map?{x,y}',
-        tokens: {x: '123', y: '987'},
-        target: '.result3'
+    
+    $('#example1').click(function () {
+        $.ajax({
+            url: '/foo{?query,number}',
+            tokens: {query:'person', number: '1234'},
+            target: '.result1'
+        });   
     });
-    $.ajax({
-        url: '/map?{x,y}',
-        tokens: {x: '123'},
-        target: '.result4'
+    
+    $('#example2').click(function () {
+        $.ajax({
+            url: '/foo{?query,number}',
+            tokens: {number: '1234'},
+            target: '.result2'
+        }); 
     });
-    $.ajax({
-        url: '/foo?fixed=yes{&x}',
-        tokens: {x: '123'},
-        target: '.result5'
+    
+    $('#example3').click(function () {
+        $.ajax({
+            url: '/map?{x,y}',
+            tokens: {x: '123', y: '987'},
+            target: '.result3'
+        });
     });
-    $.ajax({
-        url: '/foo{?list}',
-        tokens: {list: [ "red", "green", "blue" ] },
-        target: '.result6'
-    }); 
-    $.ajax({
-        url: '/foo{?list*}',
-        tokens: {list: [ "red", "green", "blue" ] },
-        target: '.result7'
+    
+    $('#example4').click(function () {
+        $.ajax({
+            url: '/map?{x,y}',
+            tokens: {x: '123'},
+            target: '.result4'
+        });
+    });
+    
+    $('#example5').click(function () {
+        $.ajax({
+            url: '/foo?fixed=yes{&x}',
+            tokens: {x: '123'},
+            target: '.result5'
+        });
+    });
+    
+    $('#example6').click(function () {
+        $.ajax({
+            url: '/foo{?list}',
+            tokens: {list: [ "red", "green", "blue" ] },
+            target: '.result6'
+        });
+    });
+    
+    $('#example7').click(function () { 
+        $.ajax({
+            url: '/foo{?list*}',
+            tokens: {list: [ "red", "green", "blue" ] },
+            target: '.result7'
+        }); 
     }); 
 });
     </script>

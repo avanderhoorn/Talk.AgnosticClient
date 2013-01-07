@@ -145,6 +145,9 @@ table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr >
     border: 1px #aaa solid;
     padding: 0.2em;
 }
+.examples td {
+    padding: 1em !important;
+}
 .actions {
     text-align: center;
     margin-top: 1em;
