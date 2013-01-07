@@ -4,18 +4,80 @@
 </hgroup>
 
 <article> 
-    <h5></h5>
-    
+    <h5>JSON Document Home</h5>
+    Preference for non-browser web application (WebAPI's) to use link driven approach to their interactions to assure loose 
+    couping.
     <ul>
-        <li></li> 
-        <li></li> 
+        <li>Enabling extensibility and API evolution</li> 
+        <li>Based upon experences with APIs tied to specific static URI paths</li> 
+        <li>Resulted in brittle, tight coupling between client and server.</li> 
     </ul>  
 </article>
 
 <aside>
     <h3>Links</h3> 
     <ul>
-        <li><a href=""></a></li> 
-        <li><a href=""></a></li> 
+        <li><a href="http://tools.ietf.org/html/draft-nottingham-json-home-00">Home Documents for HTTP APIs</a></li> 
+        <li><a href="http://tools.ietf.org/html/rfc5988">Link relations [RFC5988]</a></li> 
+        <li><a href="http://tools.ietf.org/html/rfc6570">URI Template [RFC6570]</a></li>
     </ul>
 </aside> 
+
+<article> 
+    <h5>Client Discovery</h5>
+    As such, the client needs to be able to discover this information quickly and efficiently use it to interact with the server.
+    <ul>
+        <li>"Home document" for a HTTP API</li>  
+    </ul>  
+</article>
+
+<article> 
+    <h5>Proposal</h5> 
+    <ul>
+        <li>Data type: Json</li>  
+        <li>Media type: <code>application/json-home</code></li>  
+        <li>Root node: <code>resources</code> (whose child keys are link relation types - uri's)</li> 
+        <li>Sample: 
+            <pre>GET / HTTP/1.1
+Host: example.org
+Accept: application/json-home
+
+HTTP/1.1 200 OK
+Content-Type: application/json-home
+Cache-Control: max-age=3600
+Connection: close
+
+{
+    "resources": {
+        "http://example.org/rel/widgets": {
+            "href": "/widgets/"
+        },
+        "http://example.org/rel/widget": {
+            "href-template": "/widgets/{widget_id}",
+            "href-vars": {
+                "widget_id": "http://example.org/param/widget"
+            },
+            "hints": {
+                "allow": ["GET", "PUT", "DELETE", "PATCH"],
+                "representations": ["application/json"],
+                "accept-patch": ["application/json-patch"],
+                "accept-post": ["application/xml"],
+                "accept-ranges": ["bytes"]
+            }
+        }
+    }
+}</pre>
+            Here, we have a home document that links two a resource,     
+            <ul>
+                <li>"/widgets/" with the relation "http://example.org/rel/widgets", and</li>
+                <li>"http://example.org/rel/widget" using a URI Template [RFC6570]</li>
+            </ul>
+        </li>  
+    </ul>  
+</article>
+
+<article> 
+    @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.Jsonp))
+
+    @Html.ActionLink("Next", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.ResourceDescription))
+</article>
