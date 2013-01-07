@@ -23,7 +23,7 @@
 <article> 
     <h5>Glimpse Example</h5> 
     <ul>
-        <li>Glimpse depends on many different server resources:
+        <li>Client depends on many different server resources:
             <ul>
                 <li>Request: Data of a given request</li>
                 <li>Ajax: Where child requests for a given parent can be found</li>
@@ -51,14 +51,15 @@
         "glimpse_ajax" : "Ajax?parentRequestId={parentRequestId}&version={version}{&Callback}",
         "glimpse_history" : "History?version={version}{&top}{&Callback}",
         "glimpse_tab" : "Tab?requestId={requestId}&pluginKey={pluginKey}&version={version}{&Callback}",
-        "glimpse_paging" : "Pager?key={key}&pageIndex={pageIndex}&version={version}{&Callback}", 
+        "glimpse_paging" : "Pager?pluginKey={key}&pageIndex={pageIndex}&version={version}{&Callback}", 
         "glimpse_config" : "Config?version={version}",
         "glimpse_logo" : "Logo?version={version}",
         "glimpse_sprite" : "Sprite?version={version}",
-        "glimpse_popup" : "Popup?version={version}&requestId={requestId}"
+        "glimpse_popup" : "Popup?requestId={requestId}&version={version}"
     }
 }</pre>
             Links are defined as URI Templates (see <a href="http://tools.ietf.org/html/rfc6570">[RFC6570]</a>.
+            We will break this down more later.
         </li>
     </ul>  
 </article>
