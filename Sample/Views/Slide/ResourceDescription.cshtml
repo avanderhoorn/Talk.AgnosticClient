@@ -2,7 +2,7 @@
     <h1>Resource Description</h1><br />
     <h2>Now we know that we can work with any domain, we need to know which resources are available.</h2>
 </hgroup>
-
+ 
 <article> 
     <h5></h5>
     
@@ -19,3 +19,9 @@
         <li><a href=""></a></li> 
     </ul>
 </aside> 
+
+<article> 
+    @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.Jsonp))
+
+    @Html.ActionLink("Next", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.InitialRequest))
+</article>
