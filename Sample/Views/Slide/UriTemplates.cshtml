@@ -58,7 +58,7 @@
                             Result:<br />
                             <em class="result1"></em> 
                         </td>
-                        <td width="15%"><input type="button" value="Run" id="example1"></td>
+                        <td><input type="button" value="Run" id="example1"></td>
                     </tr>
                     <tr>
                         <th width="20%">Example 2:</th>
@@ -145,8 +145,7 @@ $(function() {
     $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
         if (options.target) {
             $(options.target).text(options.url);
-            jqXHR.abort();
-            $(options.target).closest('tr').find('input').hide();
+            jqXHR.abort(); 
         }
     });
     
