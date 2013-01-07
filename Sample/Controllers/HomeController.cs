@@ -6,24 +6,24 @@ using System.Web.Mvc;
 
 namespace Sample.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : Controller
     {
-        public ActionResult Index()
+        public virtual ActionResult Index()
         { 
             return View();
         }
 
-        public ActionResult References()
-        { 
-            return View();
-        } 
-
-        public ActionResult About()
+        public virtual ActionResult References()
         { 
             return View();
         }
 
-        public ActionResult Contact()
+        public virtual ActionResult About()
+        { 
+            return View();
+        }
+
+        public virtual ActionResult Contact()
         { 
             return View();
         }

@@ -1,21 +1,164 @@
 ﻿<hgroup class="title">
     <h1>CORS/JSONP</h1><br />
-    <h2>We don’t know where our request is coming from so we need to be able to work with any domain.</h2>
+    <h2>We don’t know where requests will come from, need to be able to work with any domain.</h2>
 </hgroup>
 
 <article> 
-    <h5></h5>
-    
+    <h5>Problem</h5> 
     <ul>
-        <li></li> 
-        <li></li> 
+        <li>
+            Resources (assets, supporting services, etc) can be hosted anywhere.
+            <table class="wikitable">
+                <tbody>
+                    <tr>
+                        <th>Compared URL</th>
+                        <th>Outcome</th>
+                        <th>Reason</th>
+                    </tr>
+                    <tr>
+                        <td><b><a rel="nofollow" class="external free" href="http://www.example.com">http://www.example.com</a></b>/dir/page.html</td>
+                        <td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">Success</td>
+                        <td>Same protocol and host</td>
+                    </tr>
+                    <tr>
+                        <td><b><a rel="nofollow" class="external free" href="http://www.example.com">http://www.example.com</a></b>/dir2/other.html</td>
+                        <td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">Success</td>
+                        <td>Same protocol and host</td>
+                    </tr>
+                    <tr>
+                        <td><a rel="nofollow" class="external free" href="http://www.example.com">http://www.example.com</a>:<b>81</b>/dir/other.html</td>
+                        <td style="background: #ff9090; color: black; vertical-align: middle; text-align: center;" class="table-no">Failure</td>
+                        <td>Same protocol and host but different port</td>
+                    </tr>
+                    <tr>
+                        <td><b>https</b>://www.example.com/dir/other.html</td>
+                        <td style="background: #ff9090; color: black; vertical-align: middle; text-align: center;" class="table-no">Failure</td>
+                        <td>Different protocol</td>
+                    </tr>
+                    <tr>
+                        <td>http://<b>en.example.com</b>/dir/other.html</td>
+                        <td style="background: #ff9090; color: black; vertical-align: middle; text-align: center;" class="table-no">Failure</td>
+                        <td>Different host</td>
+                    </tr>
+                    <tr>
+                        <td>http://<b>example.com</b>/dir/other.html</td>
+                        <td style="background: #ff9090; color: black; vertical-align: middle; text-align: center;" class="table-no">Failure</td>
+                        <td>Different host (exact match required)</td>
+                    </tr>
+                    <tr>
+                        <td>http://<b>v2.www.example.com</b>/dir/other.html</td>
+                        <td style="background: #ff9090; color: black; vertical-align: middle; text-align: center;" class="table-no">Failure</td>
+                        <td>Different host (exact match required)</td>
+                    </tr>
+                </tbody>
+            </table> 
+
+        </li> 
+        <li>Need a way to allow the browser to deal with <a href="http://en.wikipedia.org/wiki/Same_origin_policy">Same origin security policy</a>.</li> 
     </ul>  
 </article>
 
 <aside>
     <h3>Links</h3> 
     <ul>
-        <li><a href=""></a></li> 
+        <li><a href="http://json-p.org/">json-p.org</a></li> 
         <li><a href=""></a></li> 
     </ul>
 </aside> 
+
+<article> 
+    <h5>Glimpse Example</h5>
+    <ul>
+        <li>Version check service: Calls version.getglimpse.com to see if any updates are avaiable.</li> 
+        <li>Assets JavaScript/HTML/CSS: If there was a need to have these sitting on a CDN.</li> 
+    </ul>  
+</article>
+
+<article> 
+    <h5>Solution</h5>
+    <ul>
+        <li>
+            Leveraging JSONP:
+<pre>// JSON: 
+{
+    'name' : 'john',
+    'age' : 23
+}
+ 
+// JSONP:
+newPerson({
+    'name' : 'john',
+    'age' : 23
+});     
+</pre>
+            <ul>
+                <li>Can have some security concerns if you dont trust/control the remote server.</li>
+            </ul>
+            <div class="actions">
+                <input type="button" value="Json" id="json" /> <input type="button" value="Jsonp" id="jsonp" />
+            </div>
+            <pre class="result result-json result-jsonp"></pre>
+        </li> 
+        <li>
+            CORS (aka, "Cross-Origin Resource Sharing"):
+            <blockquote>Put simply, CORS is an extension to the standard XMLHttpRequest (aka, "XHR") object, which allows the browser to make calls across domains (despite the same-origin restriction).</blockquote>
+            <ul>
+                <li>Note, it does so by first "preflighting" a request to the target server to ask it for permission.</li>
+                <li>Problem, browser compatiability (IE8+/IE10+)</li>
+            </ul>
+            <div class="actions">
+                <input type="button" value="Cors" id="cors" />
+            </div>
+            <pre class="result result-cors"></pre>
+        </li> 
+    </ul>  
+</article>
+
+<article> 
+    @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.Introduction))
+
+    @Html.ActionLink("Next", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.InitialRequest))
+</article>
+
+@section scripts
+{
+    <script>
+        var callback = function(data, status, jqXHR) {
+            var result = JSON.stringify(data);
+            
+            if (data.Type === 'cors') {
+                result += '\r\n\r\n' + jqXHR.getAllResponseHeaders();
+            }
+
+            $('.result-' + data.Type).html(result);
+        };
+
+        $(function() { 
+            //Non jsonp 
+            $('#json').click(function() {
+                $.ajax({
+                    url: '@Url.Action(MVC.Slide.Actions.Json())',
+                    success: callback
+                });
+            }); 
+        
+            //Using jsonp 
+            $('#jsonp').click(function() {
+                $.ajax({
+                    dataType: 'jsonp',
+                    jsonpCallback: 'callback',
+                    crossDomain: true,
+                    url: '@Url.Action(MVC.Slide.Actions.Jsonp())'
+                });
+            }); 
+        
+            //Cors
+            $('#cors').click(function() {
+                $.ajax({ 
+                    url: '@Url.Action(MVC.Slide.Actions.Cors())',
+                    success: callback
+                });
+            }); 
+        });
+    </script>
+}
