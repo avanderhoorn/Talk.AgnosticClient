@@ -9,7 +9,20 @@
     <ul>
         <li>At its core Glimpse allows you to debug your web site or web service right in the browser.</li> 
         <li>Glimpse allows you to "Glimpse" into what's going on in your web server.</li> 
-    </ul> 
+    </ul>
+
+    <a class="fancybox-thumb" rel="fancybox-thumb" href="~/Images/glimpse_hud.png" title="Heads Up Display">
+        <img src="~/Images/glimpse_hud.png" width="150" />
+    </a>
+    <a class="fancybox-thumb" rel="fancybox-thumb" href="~/Images/glimpse_config.png" title="Configuration">
+        <img src="~/Images/glimpse_config.png" width="150" />
+    </a>
+    <a class="fancybox-thumb" rel="fancybox-thumb" href="~/Images/glimpse_execution.png" title="Execution">
+        <img src="~/Images/glimpse_execution.png" width="150" />
+    </a>
+    <a class="fancybox-thumb" rel="fancybox-thumb" href="~/Images/glimpse_timeline.png" title="Timeline">
+        <img src="~/Images/glimpse_timeline.png" width="150" /> 
+    </a>
 </article>
 
 <aside>
@@ -19,3 +32,34 @@
         <li><a href="http://getglimpse.com/protocol">Glimpse Protocol</a></li> 
     </ul>
 </aside>
+
+<article>
+    <h5>Architecture</h5>
+    Given the design behind Glimpse and the architecture it uses, even though Glimpse was initially developed for the .NET platform, there is no reason it can't run on other platform.    
+    <a class="fancybox-thumb" rel="fancybox-other" href="~/Images/glimpse_ecosystem.png" title="Ecosystem">
+        <img src="~/Images/glimpse_ecosystem.png" />
+    </a>
+</article>
+
+<article>  
+@Html.ActionLink("Next", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.Jsonp))
+</article>
+
+@section styles
+{
+    @Styles.Render("~/Content/fancybox")
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/fancybox")
+    <script>
+        $(document).ready(function() {
+	        $(".fancybox-thumb").fancybox({ 
+		        helpers	: { 
+			        thumbs	: { width : 50, height : 50 }
+		        }
+	        });
+	        $(".fancybox-other").fancybox();
+        });
+    </script>
+}
