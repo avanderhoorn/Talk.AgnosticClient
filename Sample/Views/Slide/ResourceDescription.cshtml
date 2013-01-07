@@ -1,24 +1,67 @@
 ﻿<hgroup class="title">
     <h1>Resource Description</h1><br />
-    <h2>Now we know that we can work with any domain, we need to know which resources are available.</h2>
+    <h2>Now we can work with any domain, we need to know what resources are available.</h2>
 </hgroup>
  
 <article> 
-    <h5></h5>
-    
+    <h5>Problem</h5> 
     <ul>
-        <li></li> 
-        <li></li> 
+        <li>What resources does this server support?</li> 
+        <li>Are any services currently not supported?</li> 
+        <li>Links can change over time - need to decouple client and server.</li> 
     </ul>  
 </article>
 
 <aside>
     <h3>Links</h3> 
     <ul>
-        <li><a href=""></a></li> 
-        <li><a href=""></a></li> 
+        <li><a href="https://github.com/Glimpse/Glimpse">Glimpse Source</a></li>  
+        <li><a href="http://tools.ietf.org/html/rfc6570">URI Template [RFC6570]</a></li>
     </ul>
 </aside> 
+ 
+<article> 
+    <h5>Glimpse Example</h5> 
+    <ul>
+        <li>Glimpse depends on many different server resources:
+            <ul>
+                <li>Request: Data of a given request</li>
+                <li>Ajax: Where child requests for a given parent can be found</li>
+                <li>History: List of historical requests</li>
+                <li>Tab: Data for a specific tab for a given request</li>
+                <li>Paging: Supports Tab data being paged</li>
+                <li>Config: System configuration</li>
+                <li>Logo: Glimpse logo</li>
+                <li>Sprite: All icons used</li>
+                <li>Popup: Resource that used used in extenal windows</li>
+            </ul>
+        </li>  
+    </ul>
+</article> 
+ 
+<article> 
+    <h5>Solution</h5> 
+    <ul>
+        <li>
+            Metadata object constructed on the server:
+            <pre>{
+    "version": "1.0",
+    "resources" : { 
+        "glimpse_request" : "Request?requestId={requestId}&version={version}{&Callback}",
+        "glimpse_ajax" : "Ajax?parentRequestId={parentRequestId}&version={version}{&Callback}",
+        "glimpse_history" : "History?version={version}{&top}{&Callback}",
+        "glimpse_tab" : "Tab?requestId={requestId}&pluginKey={pluginKey}&version={version}{&Callback}",
+        "glimpse_paging" : "Pager?key={key}&pageIndex={pageIndex}&version={version}{&Callback}", 
+        "glimpse_config" : "Config?version={version}",
+        "glimpse_logo" : "Logo?version={version}",
+        "glimpse_sprite" : "Sprite?version={version}",
+        "glimpse_popup" : "Popup?version={version}&requestId={requestId}"
+    }
+}</pre>
+            Links are defined as URI Templates (see <a href="http://tools.ietf.org/html/rfc6570">[RFC6570]</a>.
+        </li>
+    </ul>  
+</article>
 
 <article> 
     @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.Jsonp))
