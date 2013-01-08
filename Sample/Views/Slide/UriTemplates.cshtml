@@ -31,7 +31,7 @@
                         <th width="20%">Example 1:</th>
                         <td class="sample">
                             <pre>$.ajax({
-    url: '/foo{?query,number}',
+    url: '/Quote{?query,number}',
     tokens: {query:'person', number: '1234'}
 });</pre>
                             Result:<br />
@@ -43,7 +43,7 @@
                         <th width="20%">Example 2:</th>
                         <td class="sample">
 <pre>$.ajax({
-    url: '/foo{?query,number}',
+    url: '/Quote{?query,number}',
     tokens: { number: '1234'}
 });</pre>
                             Result:<br />
@@ -55,7 +55,7 @@
                         <th width="20%">Example 3:</th>
                         <td class="sample">
 <pre>$.ajax({
-    url: '/map?{x,y}',
+    url: '/Quote?{x,y}',
     tokens: {x: '123', y: '987'}
 });</pre>
                             Result:<br />
@@ -67,7 +67,7 @@
                         <th width="20%">Example 4:</th>
                         <td class="sample">
 <pre>$.ajax({
-    url: '/map?{x,y}',
+    url: '/Quote?{x,y}',
     tokens: {x: '123' }
 });</pre>
                             Result:<br />
@@ -79,7 +79,7 @@
                         <th width="20%">Example 5:</th>
                         <td class="sample">
 <pre>$.ajax({
-    url: '/foo?fixed=yes{&x}',
+    url: '/Quote?fixed=yes{&x}',
     tokens: {x: '123' }
 });</pre>
                             Result:<br />
@@ -91,7 +91,7 @@
                         <th width="20%">Example 6:</th>
                         <td class="sample">
 <pre>$.ajax({
-    url: '/foo{?list}',
+    url: '/Quote{?list}',
     tokens: {list: [ "red", "green", "blue" ] }
 });</pre>
                             Result:<br />
@@ -103,7 +103,7 @@
                         <th width="20%">Example 7:</th>
                         <td class="sample">
 <pre>$.ajax({
-    url: '/foo{?list*}',
+    url: '/Quote{?list*}',
     tokens: {list: [ "red", "green", "blue" ] }
 });</pre>
                             Result:<br />
@@ -184,7 +184,7 @@ $(function() {
     
     $('#example1').click(function () {
         $.ajax({
-            url: '/foo{?query,number}',
+            url: '/Quote{?query,number}',
             tokens: {query:'person', number: '1234'},
             target: '.result1'
         });   
@@ -192,7 +192,7 @@ $(function() {
     
     $('#example2').click(function () {
         $.ajax({
-            url: '/foo{?query,number}',
+            url: '/Quote{?query,number}',
             tokens: {number: '1234'},
             target: '.result2'
         }); 
@@ -200,7 +200,7 @@ $(function() {
     
     $('#example3').click(function () {
         $.ajax({
-            url: '/map?{x,y}',
+            url: '/Quote?{x,y}',
             tokens: {x: '123', y: '987'},
             target: '.result3'
         });
@@ -208,7 +208,7 @@ $(function() {
     
     $('#example4').click(function () {
         $.ajax({
-            url: '/map?{x,y}',
+            url: '/Quote?{x,y}',
             tokens: {x: '123'},
             target: '.result4'
         });
@@ -216,7 +216,7 @@ $(function() {
     
     $('#example5').click(function () {
         $.ajax({
-            url: '/foo?fixed=yes{&x}',
+            url: '/Quote?fixed=yes{&x}',
             tokens: {x: '123'},
             target: '.result5'
         });
@@ -224,7 +224,7 @@ $(function() {
     
     $('#example6').click(function () {
         $.ajax({
-            url: '/foo{?list}',
+            url: '/Quote{?list}',
             tokens: {list: [ "red", "green", "blue" ] },
             target: '.result6'
         });
@@ -232,7 +232,7 @@ $(function() {
     
     $('#example7').click(function () { 
         $.ajax({
-            url: '/foo{?list*}',
+            url: '/Quote{?list*}',
             tokens: {list: [ "red", "green", "blue" ] },
             target: '.result7'
         }); 
