@@ -25,18 +25,12 @@
     <ul>
         <li>
             Metadata object constructed on the server:
-            <pre>{
-    "version": "1.0",
+<pre>{ 
     "resources" : { 
-        "glimpse_request" : "Request?requestId={requestId}&version={version}{&Callback}",
-        "glimpse_ajax" : "Ajax?parentRequestId={parentRequestId}&version={version}{&Callback}",
-        "glimpse_history" : "History?version={version}{&top}{&Callback}",
-        "glimpse_tab" : "Tab?requestId={requestId}&pluginKey={pluginKey}&version={version}{&Callback}",
-        "glimpse_paging" : "Pager?pluginKey={key}&pageIndex={pageIndex}&version={version}{&Callback}", 
-        "glimpse_config" : "Config?version={version}",
-        "glimpse_logo" : "Logo?version={version}",
-        "glimpse_sprite" : "Sprite?version={version}",
-        "glimpse_popup" : "Popup?requestId={requestId}&version={version}"
+        "streamingQuotes" : "/Quote_Stream...",
+        "tickQuotes" : "/Tick_Quotes...",
+        "currencies" : "/Currenies...",
+        ...
     }
 }</pre>
             Links are defined as URI Templates (see <a href="http://tools.ietf.org/html/rfc6570">[RFC6570]</a>.
@@ -49,6 +43,21 @@
     <h5>Example</h5> 
     <ul>
         <li>Client depends on many different server resources:
+<pre>{
+    "version": "1.0",
+    "resources" : { 
+        "glimpse_request" : "/Request...",
+        "glimpse_ajax" : "/Ajax...",
+        "glimpse_history" : "/History...",
+        "glimpse_tab" : "/Tab...",
+        "glimpse_paging" : "/Pager...", 
+        "glimpse_config" : "/Config...",
+        "glimpse_logo" : "/Logo...",
+        "glimpse_sprite" : "/Sprite...",
+        "glimpse_popup" : "/Popup..."
+    }
+}</pre>
+            Description:
             <ul>
                 <li>Request: Data of a given request</li>
                 <li>Ajax: Where child requests for a given parent can be found</li>
