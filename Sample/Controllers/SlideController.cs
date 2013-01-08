@@ -32,5 +32,11 @@ namespace Sample.Controllers
         {
             return Json(new { Name = "Colin", Age = 23, Type = "cors" }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public virtual ActionResult ContentType()
+        { 
+            return Json(new { Name = "Chris", Age = 50 }, "application/vnd.glimpse.person-v1+json", JsonRequestBehavior.AllowGet);
+        }
     }
 }

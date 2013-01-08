@@ -70,6 +70,7 @@ namespace Sample.Controllers
             public readonly string Json = "Json";
             public readonly string Jsonp = "Jsonp";
             public readonly string Cors = "Cors";
+            public readonly string ContentType = "ContentType";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -79,6 +80,7 @@ namespace Sample.Controllers
             public const string Json = "Json";
             public const string Jsonp = "Jsonp";
             public const string Cors = "Cors";
+            public const string ContentType = "ContentType";
         }
 
 
@@ -151,6 +153,12 @@ namespace Sample.Controllers
         public override System.Web.Mvc.ActionResult Cors()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Cors);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ContentType()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ContentType);
             return callInfo;
         }
 

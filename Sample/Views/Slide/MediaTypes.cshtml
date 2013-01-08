@@ -4,18 +4,88 @@
 </hgroup>
 
 <article> 
-    <h5></h5>
-    
+    <h5>Problem</h5> 
     <ul>
-        <li></li> 
-        <li></li> 
+        <li>
+            Why not just <code>application/json</code>?
+            <ul>
+                <li>The above says we want any json, this isn't true.</li>
+                <li>This response’s Content-Type header simply tells a client that it should expect some JSON-formatted text.</li>
+                <li>Instead, it should communicate that the body contains a representation of a particular domain document that is formatted with JSON.</li>
+            </ul>
+            <p>Hosting schema information in a developer portal/wiki leads to more static type system - hard coding is encouraged.</p>
+        </li> 
+        <li>
+            How do we version things if we don't use the URI?
+            <p>The version has nothing to do with "idea" of the resource you are requesting.</p>
+        </li> 
     </ul>  
 </article>
 
 <aside>
     <h3>Links</h3> 
     <ul>
-        <li><a href=""></a></li> 
-        <li><a href=""></a></li> 
+        <li><a href="http://restpatterns.org/Glossary/MIME_Type">Rest Mime Type</a></li>  
+        <li><a href="http://thereisnorightway.blogspot.com.au/2011/02/versioning-and-types-in-resthttp-api.html">Versioning and Content Types</a></li>  
+        <li><a href="http://stackoverflow.com/questions/389169/best-practices-for-api-versioning">StackOverflow Versioning</a></li>  
     </ul>
 </aside> 
+
+<article> 
+    <h5>Example</h5> 
+    <ul>
+        <li>
+            Glimpse payloads:
+            <p>
+                Request
+<pre>GET /Request?requestId=123 HTTP/1.1
+Accept: application/vnd.glimpse.request-v1+json</pre>
+                Response
+<pre>HTTP/1.1 200 OK
+Accept: application/vnd.glimpse.request-v1+json</pre>
+            </p>
+        </li>  
+    </ul>  
+</article>
+
+<article> 
+    <h5>Solution</h5> 
+    <code>application/vnd.glimpse.request-v1+json</code>
+    <ul>
+        <li><code>/vnd</code>: Prefix to the subtypte for vendor specific MIME types which are part of a commercial product.</li>
+        <li><code>.glimpse</code>: The vnd. prefix should be followed by the vendor name.</li> 
+        <li><code>.request</code>: Vendor name is followed by the Subtype.</li> 
+        <li><code>-v1</code>: Version of the endpoint.</li> 
+        <li><code>+json</code>: Provision to allow for an infinite number of recognizable json MIME types.</li> 
+    </ul>  
+    <div class="actions">
+        <input type="button" value="Content Type" id="contentType" />
+    </div>
+    <pre class="result result-contentType"></pre>
+</article>
+
+<article> 
+    @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.UriTemplates))
+
+    @Html.ActionLink("Next", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.ResourceRelationships))
+</article>
+
+@section scripts
+{
+    <script>
+        var callback = function(data, status, jqXHR) {
+            var result = JSON.stringify(data) + '\r\n\r\n' + jqXHR.getAllResponseHeaders();
+            
+            $('.result-contentType').html(result);
+        };
+
+        $(function() {  
+            $('#contentType').click(function() {
+                $.ajax({
+                    url: '@Url.Action(MVC.Slide.Actions.ContentType())',
+                    success: callback
+                });
+            }); 
+        });
+    </script>
+}
