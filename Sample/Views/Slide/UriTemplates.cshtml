@@ -20,27 +20,6 @@
         <li><a href="http://jqueryuritemplates.anthonyvanderhoorn.com/">jQuery Uri Templates</a></li> 
     </ul>
 </aside> 
- 
-<article> 
-    <h5>Example</h5> 
-    <ul>
-        <li>As already noted, client depends on many different server resources.</li>  
-        <li>
-            Most of these endpoint have a URIs that needs to be parameterized:
-            <ul>
-                <li>Request: Request?requestId=123&amp;version=1.0</li>
-                <li>Ajax: Ajax?parentRequestId=123&amp;version=1.0</li>
-                <li>History: History?version=1.0</li>
-                <li>Tab: Tab?requestId=123&amp;pluginKey=Config&amp;version=1.0</li>
-                <li>Paging: Pager?pluginKey=Config&amp;pageIndex=1&amp;version=1.0</li>
-                <li>Config: Config?version=1.0</li>
-                <li>Logo: Logo?version=1.0</li>
-                <li>Sprite: Sprite?version=1.0</li>
-                <li>Popup: Popup?requestId=123&amp;version=1.0</li>
-            </ul>
-        </li>  
-    </ul>
-</article> 
 
 <article> 
     <h5>Solution</h5> 
@@ -136,6 +115,27 @@
         </li>  
     </ul>  
 </article>
+ 
+<article> 
+    <h5>Example</h5> 
+    <ul>
+        <li>As already noted, client depends on many different server resources.</li>  
+        <li>
+            Most of these endpoint have a URIs that needs to be parameterized:
+            <ul>
+                <li>Request: Request?requestId=123&amp;version=1.0</li>
+                <li>Ajax: Ajax?parentRequestId=123&amp;version=1.0</li>
+                <li>History: History?version=1.0</li>
+                <li>Tab: Tab?requestId=123&amp;pluginKey=Config&amp;version=1.0</li>
+                <li>Paging: Pager?pluginKey=Config&amp;pageIndex=1&amp;version=1.0</li>
+                <li>Config: Config?version=1.0</li>
+                <li>Logo: Logo?version=1.0</li>
+                <li>Sprite: Sprite?version=1.0</li>
+                <li>Popup: Popup?requestId=123&amp;version=1.0</li>
+            </ul>
+        </li>  
+    </ul>
+</article> 
 
 <article> 
     @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.InitialRequest))
