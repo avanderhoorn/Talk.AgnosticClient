@@ -158,6 +158,9 @@ table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr >
     padding: 1em;
     overflow-x: hidden;
 }
+.indent {
+    padding-left: 2em;
+}
 
 /* site title
 ----------------------------------------------------------*/

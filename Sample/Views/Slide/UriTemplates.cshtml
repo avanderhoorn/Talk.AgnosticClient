@@ -123,15 +123,42 @@
         <li>
             Most of these endpoint have a URIs that needs to be parameterized:
             <ul>
-                <li>Request: Request?requestId=123&amp;version=1.0</li>
-                <li>Ajax: Ajax?parentRequestId=123&amp;version=1.0</li>
-                <li>History: History?version=1.0</li>
-                <li>Tab: Tab?requestId=123&amp;pluginKey=Config&amp;version=1.0</li>
-                <li>Paging: Pager?pluginKey=Config&amp;pageIndex=1&amp;version=1.0</li>
-                <li>Config: Config?version=1.0</li>
-                <li>Logo: Logo?version=1.0</li>
-                <li>Sprite: Sprite?version=1.0</li>
-                <li>Popup: Popup?requestId=123&amp;version=1.0</li>
+                <li>
+                    Request: <code>Request?requestId=123&amp;version=1.0</code>
+                    <p class="indent"><code>Request?requestId={requestId}&version={version}{&Callback</code></p>
+                </li>
+                <li>
+                    Ajax: <code>Ajax?parentRequestId=123&amp;version=1.0</code>
+                    <p class="indent"><code>Ajax?parentRequestId={parentRequestId}&version={version}{&Callback}</code></p>
+                </li>
+                <li>
+                    History: <code>History?version=1.0</code>
+                    <p class="indent"><code>History?version={version}{&top}{&Callback}</code></p>
+                </li>
+                <li>
+                    Tab: <code>Tab?requestId=123&amp;pluginKey=Config&amp;version=1.0</code>
+                    <p class="indent"><code>Tab?requestId={requestId}&pluginKey={pluginKey}&version={version}{&Callback}</code></p>
+                </li>
+                <li>
+                    Paging: <code>Pager?pluginKey=Config&amp;pageIndex=1&amp;version=1.0</code>
+                    <p class="indent"><code>Pager?pluginKey={key}&pageIndex={pageIndex}&version={version}{&Callback}</code></p>
+                </li>
+                <li>
+                    Config: <code>Config?version=1.0</code>
+                    <p class="indent"><code>Config?version={version}</code></p>
+                </li>
+                <li>
+                    Logo: <code>Logo?version=1.0</code>
+                    <p class="indent"><code>Logo?version={version}</code></p>
+                </li>
+                <li>
+                    Sprite: <code>Sprite?version=1.0</code>
+                    <p class="indent"><code>Sprite?version={version}</code></p>
+                </li>
+                <li>
+                    Popup: <code>Popup?requestId=123&amp;version=1.0</code>
+                    <p class="indent"><code>Popup?requestId={requestId}&version={version}</code></p>
+                </li>
             </ul>
         </li>  
     </ul>
