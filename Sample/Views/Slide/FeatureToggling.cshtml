@@ -4,18 +4,79 @@
 </hgroup>
 
 <article> 
-    <h5></h5>
-    
+    <h5>Problem</h5>
     <ul>
-        <li></li> 
-        <li></li> 
+        <li>How does the server indicate that a featrue is not supported?</li>
+        <li>Client and Server evolve at differnet rates.</li>  
+        <li>Multiple server implemenations which may or may not implement the same features as the client.</li>  
     </ul>  
 </article>
 
-<aside>
+<!--<aside>
     <h3>Links</h3> 
     <ul>
         <li><a href=""></a></li> 
         <li><a href=""></a></li> 
     </ul>
-</aside> 
+</aside>-->
+
+<article> 
+    <h5>Solution</h5> 
+    <ul>
+        <li>Use Resource Description mechnisim:
+<pre>{ 
+    "resources" : { 
+        "streamingQuotes" : "/Quote_Stream...",
+        "tickQuotes" : "/Tick_Quotes...",
+        "currencies" : "/Currenies...",
+        ...
+    }
+}</pre>    
+            vs. 
+<pre>{ 
+    "resources" : {  
+        "tickQuotes" : "/Tick_Quotes...",
+        "currencies" : "/Currenies...",
+        ...
+    }
+}</pre>
+            This Resource Description doesn't support viewing Streaming Quotes.
+        </li>
+    </ul>
+</article> 
+
+<article> 
+    <h5>Example</h5> 
+    <ul>
+        <li>Glimpse Resource Description:
+<pre>{
+    "version": "1.0",
+    "resources" : { 
+        "glimpse_request" : "Request?requestId={requestId}&version={version}{&Callback}",
+        "glimpse_ajax" : "Ajax?parentRequestId={parentRequestId}&version={version}{&Callback}",
+        "glimpse_history" : "History?version={version}{&top}{&Callback}",
+        ...
+    },
+    ...
+}</pre>
+            vs.
+<pre>{
+    "version": "1.0",
+    "resources" : { 
+        "glimpse_request" : "Request?requestId={requestId}&version={version}{&Callback}", 
+        "glimpse_history" : "History?version={version}{&top}{&Callback}",
+        ...
+    },
+    ...
+}</pre>
+            This Resource Description doesn't support viewing Ajax Requests.
+        </li>
+    </ul>
+</article>
+ 
+
+<article> 
+    @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.ResourceRelationships))
+
+    @Html.ActionLink("Next", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.HttpCaching))
+</article>
