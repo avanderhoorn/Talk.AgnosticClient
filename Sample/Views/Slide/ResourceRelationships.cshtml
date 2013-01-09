@@ -4,21 +4,53 @@
 </hgroup> 
 
 <article> 
-    <h5></h5>
-    
+    <h5>Problem</h5>
     <ul>
-        <li></li> 
-        <li></li> 
+        <li>How do we get from one request to another?</li> 
+        <li>We need to know the URI to go to to retrieve the next resource.</li> 
+        <li>APIs should be self discoverable.</li> 
     </ul>  
 </article>
 
 <aside>
     <h3>Links</h3> 
     <ul>
-        <li><a href=""></a></li> 
-        <li><a href=""></a></li> 
+        <li><a href="http://martinfowler.com/articles/richardsonMaturityModel.html">Richardson Maturity Model</a></li> 
+        <li><a href="http://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a></li> 
     </ul>
 </aside> 
+
+<article> 
+    <h5>Solution</h5> 
+    <ul>
+        <li>
+            Embed the links to more details of a resource in the message payload:
+<pre>{ 
+    portfolio: [
+        {
+            id: 1234,
+            name: 'mjones',
+            ...
+            link: {
+                rel: "/linkrels/portfolio/book" 
+                uri: "/portfolio/1234"
+            }
+        },
+        {
+            id: 5678,
+            name: 'jsmith',
+            ...
+            link: {
+                rel: "/linkrels/portfolio/book" 
+                uri: "/portfolio/5678"
+            }
+        }  
+    ]
+}</pre>
+        </li>
+    </ul>
+</article>
+ 
 
 <article> 
     @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.MediaTypes))
