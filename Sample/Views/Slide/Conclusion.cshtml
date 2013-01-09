@@ -4,18 +4,47 @@
 </hgroup>
 
 <article> 
-    <h5></h5>
-    
+    <h5>End game</h5> 
     <ul>
-        <li></li> 
-        <li></li> 
+        <li>We are using HTTP to its maximum.</li> 
+        <li>We are getting pretty close to that REST nirvana that everyone keeps talking about.</li> 
+        <li>We can scale to the web.</li> 
+        <li>
+            Decoupled client and server!
+            <ul>
+                <li>Independent evolution</li>
+                <li>Easy to swap out implementations</li>
+                <li>Testing becomes easier</li>
+            </ul>
+        </li> 
     </ul>  
-</article>
+</article> 
 
 <aside>
     <h3>Links</h3> 
     <ul>
-        <li><a href=""></a></li> 
-        <li><a href=""></a></li> 
+        <li><a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a></li> 
+        <li><a href="http://martinfowler.com/articles/richardsonMaturityModel.html">Richardson Maturity Model</a></li> 
     </ul>
 </aside> 
+
+<article> 
+    <h5>Real World</h5> 
+    <a class="fancybox-other fancybox-thumb" rel="fancybox-other" href="~/Images/glimpse_ecosystem.png" title="Ecosystem">
+        <img src="~/Images/glimpse_ecosystem.png" />
+    </a>
+</article> 
+
+@section styles
+{
+    @Styles.Render("~/Content/fancybox")
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/fancybox")
+    <script>
+        $(document).ready(function() { 
+	        $(".fancybox-other").fancybox();
+        });
+    </script>
+}
