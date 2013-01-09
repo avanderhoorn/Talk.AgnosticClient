@@ -35,8 +35,15 @@ namespace Sample.Controllers
 
         [HttpGet]
         public virtual ActionResult ContentType()
-        { 
+        {
             return Json(new { Name = "Chris", Age = 50 }, "application/vnd.glimpse.person-v1+json", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public virtual ActionResult CacheControl()
+        {
+            Response.AppendHeader("Cache-Control", "public, max-age=2592000");
+            return Json(new { Name = "Ash", Age = 12 }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -4,11 +4,24 @@
 </hgroup>
 
 <article> 
-    <h5></h5>
-    
+    <h5>Problem</h5> 
     <ul>
-        <li></li> 
-        <li></li> 
+        <li>How do we scale our system?</li> 
+        <li>How do we make the system appear to run faster?</li> 
+        <li>
+            How do we reduce latency? 
+            <ul>
+                <li>Requests satisfied from the cache (which is closer to the client) instead of the origin server, it takes less time for it to get the representation and display it.</li>
+                <li>This makes the Web seem more responsive.</li>
+            </ul>
+        </li>
+        <li>
+            How do we reduce network traffic? 
+            <ul>
+                <li>Because representations are reused, it reduces the amount of bandwidth used by a client.</li>
+                <li>This saves money if the client is paying for traffic, and keeps their bandwidth requirements lower and more manageable.</li>
+            </ul>
+        </li>
     </ul>  
 </article>
 
@@ -18,4 +31,77 @@
         <li><a href=""></a></li> 
         <li><a href=""></a></li> 
     </ul>
-</aside> 
+</aside>  
+
+<article> 
+    <h5>Solution</h5> 
+    <ul>
+        <li>
+            HTTP has the inbuilt caching mechanism.
+            <ul>
+                <li>Works multiple levels - Proxies, Clients, etc</li>
+            </ul>
+        </li> 
+        <li>
+            Breakdown:
+            <ul>
+                <li>
+                    <strong>Freshness</strong> allows a response to be used without re-checking it on the origin server.
+                    <p><code>Cache-Control</code>: max-age directive tells the cache how many seconds the response is fresh for.</p>
+                </li>
+                <li>
+                    <strong>Validation</strong>: can be used to check whether a cached response is still good after it becomes stale. 
+                    <p><code>Last-Modified</code>: see if request has changed.<br /><code>ETag</code>: mechanism also allows for both strong and weak validation.</p>
+                </li>
+                <li>
+                    <strong>Invalidation</strong> is usually a side effect of another request that passes through the cache. 
+                    <p>If a URL associated with a cached response subsequently gets a <code>POST</code>, <code>PUT</code> or <code>DELETE</code> request, the cached response will be invalidated.</p>
+                </li>
+            </ul>
+        </li> 
+    </ul>
+            <div class="actions">
+                <input type="button" value="Content Type" id="cache" />
+            </div>
+            <pre class="result result-cache"></pre>
+</article>
+
+<article> 
+    <h5>Solution</h5> 
+    <ul>
+        <li>
+            Glimpse payloads:
+            <p> 
+                Response
+                <pre>GET /Request HTTP/1.1 
+Cache-Control:public, max-age=2592000
+ETag:"97a-494505e0c46c0"
+Last-Modified:Fri, 05 Nov 2010 16:00:03 GMT</pre>
+            </p>
+        </li>
+    </ul>
+<article> 
+    @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.FeatureToggling))
+
+    @Html.ActionLink("Next", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.Conclusion))
+</article>
+
+@section scripts
+{
+    <script>
+        var callback = function(data, status, jqXHR) {
+            var result = JSON.stringify(data) + '\r\n\r\n' + jqXHR.getAllResponseHeaders();
+            
+            $('.result-cache').html(result);
+        };
+
+        $(function() {  
+            $('#cache').click(function() {
+                $.ajax({
+                    url: '@Url.Action(MVC.Slide.Actions.CacheControl())',
+                    success: callback
+                });
+            }); 
+        });
+    </script>
+}
