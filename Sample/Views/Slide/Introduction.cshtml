@@ -40,10 +40,11 @@
         <img src="~/Images/glimpse_ecosystem.png" />
     </a>
 </article>
-
-<article>  
-@Html.ActionLink("Next", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.Jsonp))
-</article>
+ 
+<div class="slide-navigation"> 
+    @Html.ActionLink("Prev", MVC.Home.Index())
+    @Html.ActionLink("Next", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.Jsonp))
+</div>
 
 @section styles
 {
@@ -51,6 +52,7 @@
 }
 @section scripts
 {
+    @Scripts.Render("~/bundles/slide")
     @Scripts.Render("~/bundles/fancybox")
     <script>
         $(document).ready(function() {
@@ -59,6 +61,6 @@
 			        thumbs	: { width : 50, height : 50 }
 		        }
 	        }); 
-        });
+        }); 
     </script>
 }

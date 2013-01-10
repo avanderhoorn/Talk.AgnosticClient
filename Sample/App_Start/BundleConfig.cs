@@ -9,11 +9,14 @@ namespace Sample
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js")); 
+                        "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/fancybox").Include(
                         "~/Content/fancybox/jquery.fancybox.pack.js",
                         "~/Content/fancybox/helpers/jquery.fancybox-thumbs.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/slide").Include(
+                        "~/Scripts/jquery.slide.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

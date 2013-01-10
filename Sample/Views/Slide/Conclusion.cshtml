@@ -26,7 +26,7 @@
         <li><a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a></li> 
         <li><a href="http://martinfowler.com/articles/richardsonMaturityModel.html">Richardson Maturity Model</a></li> 
     </ul>
-</aside> 
+</aside>  
 
 <article> 
     <h5>Real World</h5> 
@@ -35,12 +35,19 @@
     </a>
 </article> 
 
+<div class="slide-navigation"> 
+    @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.HttpCaching))
+
+    @Html.ActionLink("Next", MVC.Home.Contact())
+</div>
+
 @section styles
 {
     @Styles.Render("~/Content/fancybox")
 }
 @section scripts
 {
+    @Scripts.Render("~/bundles/slide")
     @Scripts.Render("~/bundles/fancybox")
     <script>
         $(document).ready(function() { 

@@ -50,10 +50,14 @@
         </li>
     </ul>
 </article>
- 
-
-<article> 
+  
+<div class="slide-navigation"> 
     @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.MediaTypes))
 
     @Html.ActionLink("Next", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.FeatureToggling))
-</article>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/slide")
+}

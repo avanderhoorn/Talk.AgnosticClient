@@ -124,14 +124,15 @@ newPerson({
     </ul>  
 </article>
 
-<article> 
+<div class="slide-navigation"> 
     @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.Introduction))
 
     @Html.ActionLink("Next", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.ResourceDescription))
-</article>
+</div>
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/slide")
     <script>
         var callback = function(data, status, jqXHR) {
             var result = JSON.stringify(data);

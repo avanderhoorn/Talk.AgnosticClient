@@ -73,8 +73,13 @@
     </ul>
 </article> 
 
-<article> 
+<div class="slide-navigation"> 
     @Html.ActionLink("Prev", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.Jsonp))
 
     @Html.ActionLink("Next", MVC.Slide.Actions.Index(MVC.Slide.Views.ViewNames.InitialRequest))
-</article>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/slide")
+}

@@ -161,7 +161,9 @@ table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr >
 .indent {
     padding-left: 2em;
 }
-
+.slide-navigation {
+    clear: both;
+}
 /* site title
 ----------------------------------------------------------*/
 .site-title {
