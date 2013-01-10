@@ -164,6 +164,9 @@ table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr >
 .slide-navigation {
     clear: both;
 }
+.content .selected {
+    font-weight: bold;
+}
 /* site title
 ----------------------------------------------------------*/
 .site-title {
