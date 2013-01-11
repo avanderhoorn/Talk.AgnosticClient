@@ -25,6 +25,7 @@ using T4MVC;
 public static class MVC
 {
     public static Sample.Controllers.HomeController Home = new Sample.Controllers.T4MVC_HomeController();
+    public static Sample.Controllers.SampleController Sample = new Sample.Controllers.T4MVC_SampleController();
     public static Sample.Controllers.SlideController Slide = new Sample.Controllers.T4MVC_SlideController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
@@ -79,6 +80,8 @@ namespace Links
                       
         public static readonly string jquery_ui_1_8_20_min_js = Url("jquery-ui-1.8.20.min.js");
         public static readonly string jquery_uritemplate_1_0_min_js = Url("jquery-uritemplate.1.0.min.js");
+        public static readonly string jquery_site_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.site.min.js") ? Url("jquery.site.min.js") : Url("jquery.site.js");
+                      
         public static readonly string jquery_slide_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.slide.min.js") ? Url("jquery.slide.min.js") : Url("jquery.slide.js");
                       
         public static readonly string jquery_unobtrusive_ajax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.unobtrusive-ajax.min.js") ? Url("jquery.unobtrusive-ajax.min.js") : Url("jquery.unobtrusive-ajax.js");

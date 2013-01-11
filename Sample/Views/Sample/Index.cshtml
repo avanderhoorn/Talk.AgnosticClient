@@ -1,0 +1,12 @@
+﻿<hgroup class="title">
+    <h1>Sample - Stock Ticker</h1><br />
+    <h2>Sample application to show the concepts of building decoupled clients and servers using HTTP.</h2>
+</hgroup>
+
+<article class="layout"></article>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/sample")
+    <script src="@Url.Action(@MVC.Sample.Metadata())?callback=sample.initMetadata"></script>
+}
